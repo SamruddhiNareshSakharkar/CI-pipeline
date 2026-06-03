@@ -1,4 +1,4 @@
-name: custom nginx
+name: custom-ginginx
 
 on:
   push:
