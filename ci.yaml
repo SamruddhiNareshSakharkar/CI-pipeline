@@ -1,23 +1,24 @@
-name : custom nginx 
+name: custom nginx
 
 on:
   push:
-    jobs:
-         docker-build:
-         runs-on: ubuntu-latest
+
+jobs:
+  docker-build:
+    runs-on: ubuntu-latest
 
     steps:
-       - name: Checkout code
-         uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-       - name: Build the Docker image
-         run: docker build -f dockerfile.yaml -t my-nginx .
-        
-       - name: Run the Docker image
-         run: docker run -d -p 8080:80 my-nginx
+      - name: Build the Docker image
+        run: docker build -f Dockerfile -t my-nginx .
 
-       - name: Check if container is running
-         run: docker ps 
-       
-       - name: Test the application
-         run: curl -I http://localhost:8080
+      - name: Run the Docker image
+        run: docker run -d -p 8080:80 my-nginx
+
+      - name: Check if container is running
+        run: docker ps
+
+      - name: Test the application
+        run: curl -I http://localhost:8080
